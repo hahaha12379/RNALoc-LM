@@ -92,24 +92,23 @@ def class_distribution(labels):
     distribution = counts / counts.sum()
     return dict(zip(classes, distribution))
 
-def evaluate(y_trues, y_preds, y_probs, num_class):
+def evaluate(y_trues, y_preds):
     if isinstance(y_trues, torch.Tensor):
         y_trues = y_trues.detach().cpu().numpy()
     if isinstance(y_preds, torch.Tensor):
         y_preds = y_preds.detach().cpu().numpy()
-    if isinstance(y_probs, torch.Tensor):
-        y_probs = y_probs.detach().cpu().numpy()
-
-    y_trues_binary = y_trues
 
     acc = accuracy_score(y_trues, y_preds)
     f1 = f1_score(y_trues, y_preds, average='macro')
     precision = precision_score(y_trues, y_preds, average='macro')
     recall = recall_score(y_trues, y_preds, average='macro')
     
+    # auc = roc_auc_score(y_trues, y_preds)
+    # aupr = average_precision_score(y_trues, y_preds)
+    # mcc = matthews_corrcoef(y_trues, y_preds)
     report = classification_report(y_trues, y_preds, output_dict=True)
     print(report)
-    return acc, f1, precision, recall
+    return acc, f1, precision, recall # ,auc, aupr, mcc
 
 class FocalLoss(nn.Module):
     '''
@@ -194,8 +193,8 @@ def train(rna_type, model, train_loader, val_loader, lr, epochs, model_path, dev
         train_preds, train_targets, train_probs = torch.cat(train_preds), torch.cat(train_targets), torch.cat(train_probs)
         val_preds, val_targets, val_probs = torch.cat(val_preds), torch.cat(val_targets), torch.cat(val_probs)
 
-        train_metrics = evaluate(train_targets, train_preds, train_probs, num_class)
-        val_metrics = evaluate(val_targets, val_preds, val_probs, num_class)
+        train_metrics = evaluate(train_targets, train_preds)
+        val_metrics = evaluate(val_targets, val_preds)
         logger.info(f"Train metrics: {train_metrics}")
         logger.info(f"Train losses: {np.mean(train_losses)}")
         logger.info(f"Validation metrics: {val_metrics}")
@@ -237,7 +236,7 @@ def test(rna_type, test_loader, y_test, model_name, device, logger, num_class):
     test_preds = np.concatenate(test_preds)
     logger.info(f"Test preds: {test_preds}")
     test_probs = np.concatenate(test_probs)
-    test_metrics = evaluate(y_test, test_preds, test_probs, num_class)
+    test_metrics = evaluate(y_test, test_preds)
     logger.info(f"Test metrics: {test_metrics}")
     test_attention_weights = np.concatenate(test_attention_weights).squeeze()
     pd.DataFrame(test_attention_weights).to_csv(f'{rna_type}_test_textcnnbilstmattention_weights.csv', mode='a')
