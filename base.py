@@ -107,12 +107,9 @@ def evaluate(y_trues, y_preds, y_probs, num_class):
     precision = precision_score(y_trues, y_preds, average='macro')
     recall = recall_score(y_trues, y_preds, average='macro')
     
-    auc = roc_auc_score(y_trues, y_preds)
-    aupr = average_precision_score(y_trues, y_preds)
-    mcc = matthews_corrcoef(y_trues, y_preds)
     report = classification_report(y_trues, y_preds, output_dict=True)
     print(report)
-    return acc, f1, precision, recall, auc, aupr, mcc
+    return acc, f1, precision, recall
 
 class FocalLoss(nn.Module):
     '''
