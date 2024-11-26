@@ -16,17 +16,17 @@ test_embedding_file = 'lnc_test_embeddings.npy'
 model_path = 'models/lncRNA/lncRNA_textcnnbilstmAtten'
 log_name = 'lnc_test'
 #===============================================
-# rna_type = 'circRNA'
-# test_file = 'circTest.pkl'
-# test_embedding_file = 'circ_test_embeddings.npy'
-# model_path = 'models/circRNA/circRNA_textcnnbilstmAtten'
-# log_name = 'circ_test'
-#===============================================
 # rna_type = 'miRNA'
 # test_file = 'miTest.pkl'
 # test_embedding_file = 'mi_test_embeddings.npy'
 # model_path = 'models/miRNA/miRNA_textcnnbilstmAtten'
 # log_name = 'mi_test'
+#===============================================
+# rna_type = 'circRNA'
+# test_file = 'circTest.pkl'
+# test_embedding_file = 'circ_test_embeddings.npy'
+# model_path = 'models/circRNA/circRNA_textcnnbilstmAtten'
+# log_name = 'circ_test'
 
 
 if torch.cuda.is_available():
