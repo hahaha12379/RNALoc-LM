@@ -1,10 +1,12 @@
-# RNALoc-LM: a pre-trained RNA language model powered for RNA subcellular localization prediction
-
+# RNALoc-LM
+A pre-trained RNA language model powered for RNA subcellular localization prediction.
 This repository contains the code for the RNA Subcellular Localization Prediction Model (RNALoc-LM), which can be used to predict the subcellular localization of three types of RNA: lncRNA, circRNA, and miRNA. 
 
 Also the web server for prediction and visualization are available at http://csuligroup.com:8000/RNALoc-LM.
 
-### Create Environment with Conda
+Before start, you need to create the environment required for the project. You can choose to create the environment directly using the RNALoc-LM.yaml file, or use the requirements.txt file to create the environment.
+
+### Create Environment with RNALoc-LM.yaml
 
 First, create the required environment.
 
@@ -19,11 +21,25 @@ Then, activate the "RNALoc-LM" environment and enter into the workspace.
 conda activate RNALoc-LM
 ```
 
+### Create Environment with requirements.txt
+
+```python
+rna-fm==0.2.2
+pytorch==1.9.0
+numpy==1.20.3
+numpy-base==1.20.3
+tqdm==4.62.3
+scikit-learn==0.24.0
+pickleshare==0.7.5
+pandas==1.3.1
+```
+
 ### Usage
 
 First of all, you need to download pre-trained models from [this gdrive link](https://drive.google.com/drive/folders/1VGye74GnNXbUMKx6QYYectZrY7G2pQ_J?usp=share_link) and put the pth files into the `pretrained` folder.
 
-Then, you can train the model in a very simple way.For different RNAs, just train the corresponding python files.
+Then, you can train the model in a very simple way.
+For different RNAs, just train the corresponding python files.
 
 ```python
 python lncRNA.py
