@@ -8,7 +8,7 @@ from tqdm import tqdm
 import os
 import random
 import torch.nn.functional as F
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, roc_auc_score, average_precision_score, matthews_corrcoef
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.model_selection import StratifiedKFold
 import pickle
