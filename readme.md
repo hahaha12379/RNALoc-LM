@@ -25,15 +25,16 @@ conda activate RNALoc-LM
 ### Create Environment with requirements.txt
 
 ```python
-rna-fm==0.2.2
-pytorch==1.9.0
 numpy==1.20.3
-numpy-base==1.20.3
 tqdm==4.62.3
 scikit-learn==0.24.0
 pickleshare==0.7.5
 pandas==1.3.1
+pytorch==1.9.0
+ptflops==0.6.6
+rna-fm==0.2.2
 ```
+It should be noted that you need to use ```python pip install rna-fm==0.2.2``` to install rna-fm.
 
 ### Usage
 
