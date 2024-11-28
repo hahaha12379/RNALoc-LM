@@ -34,14 +34,13 @@ pytorch==1.9.0
 ptflops==0.6.6
 rna-fm==0.2.2
 ```
-It should be noted that you need to use ```python pip install rna-fm==0.2.2``` to install rna-fm.
+It should be noted that you need to use ``` pip install rna-fm==0.2.2``` to install rna-fm.
 
 ### Usage
 
 First of all, you need to download pre-trained models from [this gdrive link](https://drive.google.com/drive/folders/1VGye74GnNXbUMKx6QYYectZrY7G2pQ_J?usp=share_link) and put the pth files into the `pretrained` folder.
 
-Then, you can train the model in a very simple way.
-For different RNAs, just train the corresponding python files.
+Then, you can train the model in a very simple way. For different RNAs, just train the corresponding python files.
 
 ```python
 python lncRNA.py
