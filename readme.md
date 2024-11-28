@@ -34,7 +34,7 @@ pytorch==1.9.0
 ptflops==0.6.6
 rna-fm==0.2.2
 ```
-It should be noted that you need to use ``` pip install rna-fm==0.2.2``` to install rna-fm.
+It should be noted that you need to use ```pip install rna-fm==0.2.2``` to install rna-fm.
 
 ### Usage
 
